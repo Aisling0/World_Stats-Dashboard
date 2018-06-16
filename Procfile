@@ -1,0 +1,1 @@
+web: gunicorn World_Stats:app

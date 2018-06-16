@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>World Statistics Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/keen-dashboards.css')}}">
+    <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/dc.css')}}">
+    <link rel="stylesheet" href="{{ url_for ('static', filename='css/custom.css')}}">
+</head>
+<body class="application" onload="myFunction()" style="margin:0;">
+<div id="loader"></div>
+<div></div>
+<div id="navBar" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="./">World Stats</a>
+            <button><a class="navbar-brand" href="./">Reset All</a></button>
+        </div>
+    </div>
+</div>
+<div id="myDiv" class="animate-bottom">
+    <div id="outer" class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                    <!-- Countries-Chart -->
+                    <div class="col-lg-6 col-md-12 col-sm-12">
+                        <div class="chart-wrapper">
+                            <div class="chart-title">Countries with the largest population</div>
+                            <div class="chart-stage">
+                                <div id="country-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Countries-Chart -->
+
+                    <!-- continent-Pie -->
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="chart-wrapper">
+                            <div class="chart-title">Continents</div>
+                            <div class="chart-stage">
+                                <div id="continent-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- continent-Pie -->
+                    <!-- Currency-Chart-->
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="chart-wrapper">
+                            <div class="chart-title">Currencies</div>
+                            <div class="chart-stage">
+                                <div id="currency-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Currency-Chart-->
+                    <!-- Area-Counter -->
+                    <div class="col-lg-3 col-md-3 col-sm-3">
+                        <div class="chart-wrapper">
+                            <div class="chart-title">Total Area in km²</div>
+                            <div class="chart-stage">
+                                <div id="total-area"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Area-Counter -->
+                    <!-- Population-Counter -->
+                    <div class="col-lg-3 col-md-3 col-sm-3">
+                        <div class="chart-wrapper">
+                            <div class="chart-title">Population</div>
+                            <div class="chart-stage">
+                                <div id="total-population"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Population-Counter -->
+                    <!-- Metric 1 -->
+                    <div class="col-lg-3 col-md-3 col-sm-3">
+                        <div class="chart-wrapper">
+                            <div class="chart-title">Countries Selected</div>
+                            <div class="chart-stage">
+                                <div id="number-projects-nd"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Metric 1 -->
+
+                    <!-- menu select -->
+                    <div class="col-lg-3 col-md-6 col-sm-3">
+                        <div class="chart-wrapper">
+                            <div class="chart-title">Select Country</div>
+                            <div class="chart-stage">
+                                <div id="menu-select"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- menu select -->
+
+
+                    <!-- Languages-Chart -->
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="chart-wrapper">
+                            <div class="chart-title">Spoken Languages</div>
+                            <div class="chart-stage">
+                                <div id="resource-type-row-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Languages-Chart -->
+
+                    <!-- drive-Pie -->
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <div class="chart-wrapper">
+                            <div class="chart-title">Drives on the</div>
+                            <div class="chart-stage">
+                                <div id="drive-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- drive-Pie -->
+
+                    <!-- Full results -->
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <div class="chart-wrapper">
+                            <div class="chart-title">Info Table</div>
+                            <div class="chart-stage">
+                                <div id="FullResultsTable" class="scroll-box">
+                                    <div class='header'></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Full results -->
+                <div class="row3">
+                    <!-- Population-Bar-Chart -->
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="chart-wrapper">
+                            <div class="chart-title">Population by country</div>
+                            <div class="chart-stage">
+                                <div id="Population-Bar-Chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Population-Bar-Chart -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <button onclick="topFunction()" id="scrollBtn" title="Go to top">Top</button>
+</div>
+<hr>
+<script src="{{ url_for ('static', filename='lib/js/jquery.min.js')}}"></script>
+<script src="{{ url_for ('static', filename='lib/js/bootstrap.min.js')}}"></script>
+<script src="{{ url_for ('static', filename='lib/js/crossfilter.js')}}"></script>
+<script src="{{ url_for ('static', filename='lib/js/d3.js')}}"></script>
+<script src="{{ url_for ('static', filename='lib/js/dc.js')}}"></script>
+<script src="{{ url_for ('static', filename='lib/js/queue.js')}}"></script>
+<script src="{{ url_for ('static', filename='lib/js/keen.min.js')}}"></script>
+<script src="{{ url_for ('static', filename='js/graph.js')}}"></script>
+<script src="{{ url_for ('static', filename='js/scroll.js')}}"></script>
+<script src="{{ url_for ('static', filename='js/load.js')}}"></script>
+</body>
+</html>
