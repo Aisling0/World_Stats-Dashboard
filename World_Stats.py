@@ -7,7 +7,7 @@ import os
 app = Flask(__name__)
 
 MONGODB_URI = os.getenv('MONGODB_URI')
-DBS_NAME = os.getenv('MONGO_DB_NAME', 'heroku_7ssmmd91')
+DBS_NAME = os.getenv('MONGO_DB_NAME')
 COLLECTION_NAME = os.getenv('MONGO_COLLECTION_NAME', 'worldCountries')
 
 
