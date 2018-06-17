@@ -36,24 +36,17 @@ def index():
 
 @app.route("/worldStats/worldCountries")
 def stat_projects():
-
-
-    # *** Run Locally ***#
-    # with MongoClient(MONGODB_HOST, MONGODB_PORT) as conn:
-    # *** END: Run Locally ***#
-
-    # * Congfigure to run on heroku *#
-    connection = MongoClient(MONGODB_URI)
-    # * END Congfigure to run on heroku *#
-
-    collection = connection[DBS_NAME][COLLECTION_NAME]
-    projects = collection.find(projection=FIELDS, limit=20000)
-    json_projects = []
-    for project in projects:
-        json_projects.append(project)
-    json_projects = json.dumps(json_projects)
-    connection.close()
-    return json_projects
+    # Open a connection to MongoDB using a with statement such that the
+    # connection will be closed as soon as we exit the with statement
+    # The MONGO_URI connection is required when hosted using a remote mongo db.
+    with MongoClient(MONGO_URI) as conn:
+        # Define which collection we wish to access
+        collection = conn[DBS_NAME][COLLECTION_NAME]
+        # Retrieve a result set only with the fields defined in FIELDS
+        # and limit the the results to a lower limit of 20000
+        projects = collection.find(projection=FIELDS, limit=20000)
+        # Convert projects to a list in a JSON object and return the JSON data
+        return json.dumps(list(projects))
 
 
 if __name__ == "__main__":
