@@ -48,7 +48,7 @@ def stat_projects():
 
     collection = connection[DBS_NAME][COLLECTION_NAME]
     projects = collection.find(projection=FIELDS, limit=20000)
-    rjson_projects = []
+    json_projects = []
     for project in projects:
         json_projects.append(project)
     json_projects = json.dumps(json_projects)
