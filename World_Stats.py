@@ -10,18 +10,6 @@ MONGO_URI = os.getenv('MONGODB_URI', 'mongodb://root:tqksgzQ!@8a6fv2,@ds163330.m
 DBS_NAME = os.getenv('MONGO_DB_NAME', 'heroku_7ssmmd91')
 COLLECTION_NAME = os.getenv('MONGO_COLLECTION_NAME', 'worldCountries')
 
-FIELDS = {
-    '_id': False,
-    'country': True,
-    'capital': True,
-    'population': True,
-    'languages': True,
-    'area': True,
-    'currency': True,
-    'continent': True,
-    'drive': True
-}
-
 
 @app.route("/")
 def index():
@@ -30,6 +18,18 @@ def index():
 
 @app.route("/worldStats/worldCountries")
 def stat_projects():
+
+    FIELDS = {
+        '_id': False,
+        'country': True,
+        'capital': True,
+        'population': True,
+        'languages': True,
+        'area': True,
+        'currency': True,
+        'continent': True,
+        'drive': True
+    }
 
     with MongoClient(MONGO_URI) as conn:
         collection = conn[DBS_NAME][COLLECTION_NAME]
