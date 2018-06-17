@@ -13,9 +13,9 @@ app = Flask(__name__)
 # COLLECTION_NAME = 'worldCountries'
 #*** END: Run Locally ***#
 
-MONGODB_URI = os.getenv('MONGODB_URI', 'mongodb://heroku_7ssmmd91:oduotmmvrf4pvsknff12bmujn8@ds163330.mlab.com:63330/heroku_7ssmmd91')
+MONGO_URI = os.getenv('MONGODB_URI', 'mongodb://root:tqksgzQ!@8a6fv2,@ds163330.mlab.com:63330/heroku_7ssmmd91')
 DBS_NAME = os.getenv('MONGO_DB_NAME','heroku_7ssmmd91')
-COLLECTION_NAME = os.getenv('MONGO_COLLECTION_NAME','worldCountries')
+COLLECTION_NAME =('MONGO_COLLECTION_NAME','worldCountries')
 
 FIELDS = {
     '_id': False,
@@ -35,17 +35,12 @@ def index():
 
 
 @app.route("/worldStats/worldCountries")
+
 def stat_projects():
-    # Open a connection to MongoDB using a with statement such that the
-    # connection will be closed as soon as we exit the with statement
-    # The MONGO_URI connection is required when hosted using a remote mongo db.
+
     with MongoClient(MONGO_URI) as conn:
-        # Define which collection we wish to access
         collection = conn[DBS_NAME][COLLECTION_NAME]
-        # Retrieve a result set only with the fields defined in FIELDS
-        # and limit the the results to a lower limit of 20000
         projects = collection.find(projection=FIELDS, limit=20000)
-        # Convert projects to a list in a JSON object and return the JSON data
         return json.dumps(list(projects))
 
 
