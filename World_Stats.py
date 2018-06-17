@@ -6,16 +6,9 @@ import os
 
 app = Flask(__name__)
 
-#*** Run Locally ***#
-# MONGODB_HOST = 'localhost'
-# MONGODB_PORT = 27017
-# DBS_NAME = 'worldStats'
-# COLLECTION_NAME = 'worldCountries'
-#*** END: Run Locally ***#
-
 MONGO_URI = os.getenv('MONGODB_URI', 'mongodb://root:tqksgzQ!@8a6fv2,@ds163330.mlab.com:63330/heroku_7ssmmd91')
-DBS_NAME = os.getenv('MONGO_DB_NAME','heroku_7ssmmd91')
-COLLECTION_NAME =('MONGO_COLLECTION_NAME','worldCountries')
+DBS_NAME = os.getenv('MONGO_DB_NAME', 'heroku_7ssmmd91')
+COLLECTION_NAME = os.getenv('MONGO_COLLECTION_NAME', 'worldCountries')
 
 FIELDS = {
     '_id': False,
@@ -29,13 +22,13 @@ FIELDS = {
     'drive': True
 }
 
+
 @app.route("/")
 def index():
     return render_template("index.html")
 
 
 @app.route("/worldStats/worldCountries")
-
 def stat_projects():
 
     with MongoClient(MONGO_URI) as conn:
