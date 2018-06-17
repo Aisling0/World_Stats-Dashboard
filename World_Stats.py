@@ -6,7 +6,7 @@ import os
 
 app = Flask(__name__)
 
-MONGODB_URI = os.getenv('MONGODB_URI', 'mongodb://localhost:27017')
+MONGO_URI = os.getenv('MONGODB_URI', 'mongodb://localhost:27017')
 DBS_NAME = os.getenv('MONGO_DB_NAME', 'worldStats')
 COLLECTION_NAME = os.getenv('MONGO_COLLECTION_NAME', 'worldCountries')
 
@@ -30,19 +30,11 @@ def stat_projects():
         'continent': True,
         'drive': True
     }
-    connection = MongoClient(MONGODB_URI)
 
-    collection = connection[DBS_NAME][COLLECTION_NAME]
-    projects = collection.find(projection=FIELDS, limit=55000)
-    json_projects = []
-    for project in projects:
-        json_projects.append(project)
-    json_projects = json.dumps(json_projects)
-    connection.close()
-    return json_projects
-
-
-#   important to close the connection
+    with MongoClient(MONGO_URI) as conn:
+        collection = conn[DBS_NAME][COLLECTION_NAME]
+        projects = collection.find(projection=FIELDS, limit=20000)
+        return json.dumps(list(projects))
 
 
 if __name__ == "__main__":
