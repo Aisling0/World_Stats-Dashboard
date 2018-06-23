@@ -38,7 +38,6 @@ function makeGraphs(error, donorsUSProjects) {
         return d["population"];
     });
 
-
     var all = cf.groupAll();
 
     var totalDonations = cf.groupAll().reduceSum(function (d) {
