@@ -55,9 +55,9 @@ function makeGraphs(error, donorsUSProjects) {
     var areaChart = dc.numberDisplay("#total-area");
     var totalPopulation = dc.numberDisplay("#total-population");
     var selectField = dc.selectMenu('#menu-select');
-    var numberCountries = dc.numberDisplay("#number-projects-nd");
+    var numberCountries = dc.numberDisplay("#numberCountries");
     var populationChart = dc.barChart('#Population-Bar-Chart');
-    var languageChart = dc.rowChart("#resource-type-row-chart");
+    var languageChart = dc.rowChart("#languages-row-chart");
     var countriesChart = dc.rowChart("#country-chart");
     var fullresults = dc.dataTable("#FullResultsTable");
     var driveChart = dc.pieChart("#drive-chart");
@@ -133,7 +133,7 @@ function makeGraphs(error, donorsUSProjects) {
 
     populationChart
         .ordinalColors(["#79CED7", "#66AFB2", "#C96A23", "#D3D1C5", "#F5821F"])
-        .width(400)
+        .width(500)
         .height(200)
         .ordering(function(d){
             return d.value;
@@ -153,7 +153,7 @@ function makeGraphs(error, donorsUSProjects) {
     languageChart
         .ordinalColors(["#33CC99"])
         .renderLabel(true)
-        .width(450)
+        .width(300)
         .height(200)
         .ordering(function(d){
             return -d.value;

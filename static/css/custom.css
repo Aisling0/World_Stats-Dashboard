@@ -1,5 +1,23 @@
-body.application {
-
+#navBar,
+.chart-title{
+    background-color: #487577;
+    color: #f3f3f3;
+}
+footer {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+.navbar-inverse .navbar-toggle {
+    border-color: white;
+}
+.intro_button{
+    cursor: pointer;
+}
+.buttonRefresh,
+.intro_button{
+    line-height: 10px;
 }
 #total-population,
 #total-area{
@@ -16,27 +34,17 @@ body.application {
     margin: auto;
     display: block;
 }
-.container-fluid {
-}
-#number-projects-nd {
+#numberCountries {
     font-size: 22px;
 }
-#net-donations,
-#total-projects {
+#total-population,
+#total-area {
     width: 200px;
     position: relative;
     height: 60px;
-    font-size: 29px;
     vertical-align: middle;
     text-align: center;
     padding-top: 12px;
-    padding-bottom: 0px;
-}
-#net-donations {
-    width: 200px;
-    position: relative;
-    vertical-align: middle;
-    text-align: center;
     padding-bottom: 0px;
 }
 .dc-select-menu {
@@ -50,7 +58,7 @@ body.application {
     padding-top: 4px;
     padding-bottom: 0px;
 }
-/* Center the loader */
+/* Center loader */
 #loader {
     position: absolute;
     left: 50%;
@@ -73,7 +81,7 @@ body.application {
     0% { -webkit-transform: rotate(0deg); }
     100% { -webkit-transform: rotate(360deg); }
 }
-
+/* Loading-Wheel */
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
@@ -87,7 +95,6 @@ body.application {
     animation-name: animatebottom;
     animation-duration: 1s
 }
-
 @-webkit-keyframes animatebottom {
     from { bottom:-100px; opacity:0 }
     to { bottom:0px; opacity:1 }
@@ -137,9 +144,6 @@ button, th,
 .dc-chart rect.bar {
     min-width: 10px;
 }
-#Population-Bar-Chart {
-
-}
 .scroll-box {
     overflow-x: hidden;
     overflow-y: scroll;
@@ -149,11 +153,6 @@ button, th,
 #FullResultsTable {
      height: 200px;
 
-}
-#navBar,
-.chart-title {
-    background-color: #487577;
-    color: #f3f3f3;
 }
 .chart-wrapper .chart-title {
     color: #f3f3f3;
@@ -182,5 +181,12 @@ tr:hover {
     display: none;
 }
 button {
-    align-self: right;
+    background-color: transparent;
+    border: transparent;
+    color: black;
+}
+.introjs-helperNumberLayer {
+    min-height: 30px;
+    min-width: 30px;
+    background-color: #487577;
 }
