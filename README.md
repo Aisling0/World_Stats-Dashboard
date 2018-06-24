@@ -10,7 +10,7 @@ This dashboard allows users to filter stats and info for countries
 
 ## Live Demo
 
-Live demo hosted on [heroku]().
+Live demo hosted on [heroku](https://sheltered-beach-43367.herokuapp.com/).
 
 ## Requirements for deploy
 
