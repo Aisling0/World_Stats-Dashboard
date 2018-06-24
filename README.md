@@ -39,7 +39,7 @@ containers are responsive, the charts are not fully responsive due to limitation
 
 ## Author
 
-**Aisling O'Donovan** - Front-End Site created for Stream 1 Project for Code Institute.
+**Aisling O'Donovan** - Front-End Site created for Stream 2 Project for Code Institute.
 
 ## Acknowledgments
 
