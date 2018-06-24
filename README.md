@@ -36,7 +36,6 @@ containers are responsive, the charts are not fully responsive due to limitation
 3.	Validating the tooltips work
 4.	Validating buttons (e.g. reset filters) work
 
-
 ## Author
 
 **Aisling O'Donovan** - Dashboard created for Stream 2 Project for Code Institute.
