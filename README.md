@@ -28,13 +28,11 @@ Deployed to Heroku using gunicorn
 
 ## Testing
 
-Manual testing was undertaken for this application and satisfactorily passed. A sample of the tests conducted are as follows:
-1.	Testing the responsiveness of the application (on desktop and mobile applications). **N.B.:** Whilst the dashboard 
-containers are responsive, the charts are not fully responsive due to limitations of dc.js
-2.	Validating the data represented in the charts
-3.	Testing cross-filtering functionality
-3.	Validating the tooltips work
-4.	Validating buttons (e.g. reset filters) work
+Testing was undertaken for this application:
+1.	Testing responsiveness on desktop and mobile.
+2.	Validating the data 
+3.	Testing cross-filtering
+4.	Validating buttons and filters
 
 ## Author
 
